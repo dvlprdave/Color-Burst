@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-import ColorBox from '../ColorBox/ColorBox';
-import Navbar from '../Navbar/Navbar';
+import React, { Component } from 'react'
+import ColorBox from '../ColorBox/ColorBox'
+import Navbar from '../Navbar/Navbar'
 import './Palette.css'
 
 class Palette extends Component {
