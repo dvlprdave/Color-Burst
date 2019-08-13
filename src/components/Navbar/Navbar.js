@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 import Select from '@material-ui/core/Select'
 import MenuItem from '@material-ui/core/MenuItem'
 import Slider from 'rc-slider'
@@ -34,7 +35,7 @@ class Navbar extends Component {
     return (
       <nav className='Navbar'>
         <div className='logo'>
-          <a href='/'>Color-Burst</a>
+          <Link to='/'>Color-Burst</Link>
         </div>
         <div className='slider-container'>
           <span>Level: {level}</span>
