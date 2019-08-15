@@ -47,7 +47,7 @@ const Minicolor = styled.div`
   margin-bottom: -3.5px;
 `
 
-const MiniPalette = ({ paletteName, emoji, colors }) => {
+const MiniPalette = ({ paletteName, emoji, colors, handleClick }) => {
   const miniColorBoxes = colors.map(color => (
     <Minicolor
       style={{ backgroundColor: color.color }}
@@ -55,7 +55,7 @@ const MiniPalette = ({ paletteName, emoji, colors }) => {
     />
   ))
   return (
-    <Main>
+    <Main onClick={handleClick}>
       <Colors>{miniColorBoxes}</Colors>
       <Title>{paletteName} <Emoji>{emoji}</Emoji></Title>
     </Main>
