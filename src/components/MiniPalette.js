@@ -2,11 +2,12 @@ import React from 'react'
 import styled from 'styled-components'
 
 const Main = styled.div`
+  position: relative;
   background: white;
   border: 1px solid black;
   border-radius: 5px;
-  position: relative;
   overflow: hidden;
+  padding: 0.5rem;
 
    &:hover {
     cursor: pointer;
@@ -14,7 +15,11 @@ const Main = styled.div`
 `
 
 const Colors = styled.div`
-  background-color: grey;
+  width: 100%;
+  height: 150px;
+  background-color: #dae1e4;
+  border-radius: 5px;
+  overflow: hidden;
 `
 
 const Title = styled.h5`
@@ -33,11 +38,25 @@ const Emoji = styled.span`
   margin-left: 0.5rem;
 `
 
-const MiniPalette = ({ paletteName, emoji }) => {
-  // const { paletteName, emoji } = props
+const Minicolor = styled.div`
+  display: inline-block;
+  position: relative;
+  height: 25%;
+  width: 20%;
+  margin: 0 auto;
+  margin-bottom: -3.5px;
+`
+
+const MiniPalette = ({ paletteName, emoji, colors }) => {
+  const miniColorBoxes = colors.map(color => (
+    <Minicolor
+      style={{ backgroundColor: color.color }}
+      key={color.name}
+    />
+  ))
   return (
     <Main>
-      <Colors></Colors>
+      <Colors>{miniColorBoxes}</Colors>
       <Title>{paletteName} <Emoji>{emoji}</Emoji></Title>
     </Main>
   )
