@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
+import { Link } from 'react-router-dom';
 
 import MiniPalette from '../MiniPalette';
 
@@ -21,8 +22,14 @@ const Container = styled.div`
 const Nav = styled.nav`
   display: flex;
   justify-content: space-between;
+  align-items: center;
   width: 100%;
   color: white;
+
+  a {
+    color: white;
+    text-decoration: none;
+  }
 `
 const Palettes = styled.div`
   display: grid;
@@ -43,6 +50,7 @@ class PaletteList extends Component {
         <Container>
           <Nav>
             <h1>Color Burst</h1>
+            <Link to='/palette/new'>Create Palette</Link>
           </Nav>
           <Palettes>
             {palettes.map(palette => (

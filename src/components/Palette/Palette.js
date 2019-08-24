@@ -2,7 +2,18 @@ import React, { Component } from 'react'
 import ColorBox from '../ColorBox/ColorBox'
 import Navbar from '../Navbar/Navbar'
 import PaletteFooter from '../PaletteFooter';
+import styled from 'styled-components'
 import './Palette.css'
+
+const Wrapper = styled.div`
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+`
+
+const PaletteColors = styled.div`
+  height: 90vh;
+`
 
 class Palette extends Component {
   state = {
@@ -32,16 +43,17 @@ class Palette extends Component {
       />
     ))
     return (
-      <div className='Palette'>
+      <Wrapper>
         <Navbar
           level={level}
           changeLevel={this.changeLevel}
           changeFormat={this.changeFormat}
           showingAllColors
         />
-        <div className='Palette-colors'>{colorBoxes}</div>
+        {/* <div className='Palette-colors'>{colorBoxes}</div> */}
+        <PaletteColors>{colorBoxes}</PaletteColors>
         <PaletteFooter paletteName={paletteName} emoji={emoji} />
-      </div>
+      </Wrapper>
     );
   }
 }
