@@ -12,7 +12,7 @@ const DraggableWrapper = styled.div`
 `
 
 const DraggableColorBox = (props) => {
-  return <DraggableWrapper style={{ backgroundColor: props.color }}>{props.color}</DraggableWrapper>
+  return <DraggableWrapper style={{ backgroundColor: props.color }}>{props.name}</DraggableWrapper>
 }
 
 export default DraggableColorBox;
