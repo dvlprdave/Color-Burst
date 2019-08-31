@@ -15,6 +15,7 @@ import Button from '@material-ui/core/button'
 // color picker
 import { ChromePicker } from 'react-color'
 import DraggableColorBox from '../DraggableColorBox';
+// import Palette from './Palette/Palette';
 
 
 const drawerWidth = 350;
@@ -76,7 +77,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const NewPaletteForm = () => {
+const NewPaletteForm = (props) => {
   const classes = useStyles();
   const [open, setOpen] = useState(false);
   const [currentColor, setColor] = useState("teal");
@@ -121,6 +122,17 @@ const NewPaletteForm = () => {
     setName(event.target.value)
   }
 
+  function savePalette() {
+    let newName = 'New Test Palette'
+    const newPalette = {
+      paletteName: newName,
+      id: newName.toLocaleLowerCase().replace(/ /g, '-'),
+      colors: colors
+    }
+    props.savePalette(newPalette)
+    props.history.push('/')
+  }
+
   return (
     <div className={classes.root}>
       <CssBaseline />
@@ -143,6 +155,13 @@ const NewPaletteForm = () => {
           <Typography variant="h6" noWrap>
             Persistent drawer
           </Typography>
+          <Button
+            varient='contained'
+            color='secondary'
+            onClick={savePalette}
+          >
+            Save Palette
+          </Button>
         </Toolbar>
       </AppBar>
       <Drawer
