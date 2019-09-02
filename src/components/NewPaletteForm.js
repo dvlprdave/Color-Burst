@@ -122,6 +122,7 @@ const NewPaletteForm = (props) => {
       color: currentColor,
       name: colorName
     }
+    //FIXME: 
     setInputNames({ colorName: '' })
     setColors([...colors, newColor])
   }
@@ -133,7 +134,6 @@ const NewPaletteForm = (props) => {
     })
   }
 
-
   function savePalette() {
     let newName = paletteName
     const newPalette = {
@@ -143,6 +143,10 @@ const NewPaletteForm = (props) => {
     }
     props.savePalette(newPalette)
     props.history.push('/')
+  }
+
+  function removeColor(colorName) {
+    setColors(colors.filter(color => color.name !== colorName))
   }
 
   return (
@@ -249,7 +253,12 @@ const NewPaletteForm = (props) => {
       >
         <div className={classes.drawerHeader} />
         {colors.map(color => (
-          <DraggableColorBox color={color.color} name={color.name} />
+          <DraggableColorBox
+            key={color.name}
+            color={color.color}
+            name={color.name}
+            handleDelete={() => removeColor(color.name)}
+          />
         ))}
       </main>
     </div >

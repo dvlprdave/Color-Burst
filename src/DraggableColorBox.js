@@ -10,7 +10,7 @@ const DraggableWrapper = styled.div`
   width: 20%;
   margin: 0 auto;
   margin-bottom: -3.5px;
-  
+
   /* svg is the DeleteOutlinedIcon */
   &:hover svg{
     color: white;
@@ -37,13 +37,14 @@ const BoxContent = styled.div`
 `
 
 const DraggableColorBox = (props) => {
+  const { color, name, handleDelete } = props
   return (
     <DraggableWrapper
-      style={{ backgroundColor: props.color }}
+      style={{ backgroundColor: color }}
     >
       <BoxContent>
-        <span>{props.name}</span>
-        <DeleteOutlinedIcon />
+        <span>{name}</span>
+        <DeleteOutlinedIcon onClick={handleDelete} />
       </BoxContent>
     </DraggableWrapper>
   )
