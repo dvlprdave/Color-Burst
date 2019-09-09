@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom'
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
+import { makeStyles } from '@material-ui/core/styles'
 import clsx from 'clsx';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import AppBar from '@material-ui/core/AppBar';
@@ -10,8 +11,39 @@ import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import Button from '@material-ui/core/button'
 
-function PaletteFormNav({ classes, open, handleDrawerOpen, savePalette, palettes }) {
+const drawerWidth = 350;
 
+const useStyles = makeStyles(theme => ({
+  root: {
+    display: 'flex'
+  },
+  appBar: {
+    transition: theme.transitions.create(['margin', 'width'], {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.leavingScreen,
+    }),
+  },
+  appBarShift: {
+    width: `calc(100% - ${drawerWidth}px)`,
+    marginLeft: drawerWidth,
+    transition: theme.transitions.create(['margin', 'width'], {
+      easing: theme.transitions.easing.easeOut,
+      duration: theme.transitions.duration.enteringScreen,
+    }),
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    height: '64px'
+  },
+  menuButton: {
+    marginRight: theme.spacing(2),
+  },
+  navBtns: {
+
+  }
+}))
+
+function PaletteFormNav({ open, handleDrawerOpen, savePalette, palettes }) {
+  const classes = useStyles();
   const [newPaletteName, setNewPaletteName] = useState('')
 
   // Validates unique palette name
@@ -29,7 +61,7 @@ function PaletteFormNav({ classes, open, handleDrawerOpen, savePalette, palettes
   }
 
   return (
-    <div>
+    <div className={classes.root}>
       <CssBaseline />
       <AppBar
         position="fixed"
@@ -48,8 +80,10 @@ function PaletteFormNav({ classes, open, handleDrawerOpen, savePalette, palettes
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap>
-            Persistent drawer
+            Create A Palette
           </Typography>
+        </Toolbar>
+        <div className={classes.navBtns}>
           <ValidatorForm onSubmit={() => savePalette(newPaletteName)}>
             <TextValidator
               label='Palette Name'
@@ -65,14 +99,14 @@ function PaletteFormNav({ classes, open, handleDrawerOpen, savePalette, palettes
               type='submit'
             >
               Save Palette
-            </Button>
-            <Link to='/'>
-              <Button variant='contained' color='secondary'>
-                Go Back
-            </Button>
-            </Link>
+              </Button>
           </ValidatorForm>
-        </Toolbar>
+          <Link to='/'>
+            <Button variant='contained' color='secondary'>
+              Go Back
+            </Button>
+          </Link>
+        </div>
       </AppBar>
     </div>
   )
