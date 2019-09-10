@@ -134,7 +134,6 @@ const NewPaletteForm = (props) => {
     <div className={classes.root}>
       <PaletteFormNav
         open={open}
-        // classes={classes}
         palettes={palettes}
         handleDrawerOpen={handleDrawerOpen}
         savePalette={savePalette}
