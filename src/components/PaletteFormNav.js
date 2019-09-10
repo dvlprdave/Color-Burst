@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom'
 import { makeStyles } from '@material-ui/core/styles'
 import clsx from 'clsx';
@@ -32,19 +32,27 @@ const useStyles = makeStyles(theme => ({
     }),
     flexDirection: 'row',
     justifyContent: 'space-between',
+    alignItems: 'center',
     height: '64px'
   },
   menuButton: {
     marginRight: theme.spacing(2),
   },
   navBtns: {
-
+    marginRight: '1rem',
+  },
+  button: {
+    margin: '0 0.5rem'
   }
 }))
 
 function PaletteFormNav({ open, handleDrawerOpen, savePalette, palettes }) {
   const classes = useStyles();
+  const [formShowing, setFormShowing] = useState(false)
 
+  function showForm() {
+    setFormShowing(true)
+  }
   return (
     <div className={classes.root}>
       <CssBaseline />
@@ -69,18 +77,17 @@ function PaletteFormNav({ open, handleDrawerOpen, savePalette, palettes }) {
           </Typography>
         </Toolbar>
         <div className={classes.navBtns}>
-
-          <PaletteMetaForm
-            palettes={palettes}
-            savePalette={savePalette}
-          />
           <Link to='/'>
-            <Button variant='contained' color='secondary'>
+            <Button className={classes.button} variant='contained' color='secondary'>
               Go Back
             </Button>
           </Link>
+          <Button className={classes.button} variant="contained" color="primary" onClick={showForm}>
+            Open form dialog
+          </Button>
         </div>
       </AppBar>
+      {formShowing && <PaletteMetaForm palettes={palettes} savePalette={savePalette} />}
     </div>
   )
 }
