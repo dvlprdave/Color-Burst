@@ -105,12 +105,9 @@ const NewPaletteForm = (props) => {
     setColors([...colors, randomColor])
   }
 
-  function savePalette(newPaletteName) {
-    const newPalette = {
-      paletteName: newPaletteName,
-      id: newPaletteName.toLocaleLowerCase().replace(/ /g, '-'),
-      colors: colors
-    }
+  function savePalette(newPalette) {
+    newPalette.id = newPalette.paletteName.toLocaleLowerCase().replace(/ /g, '-')
+    newPalette.colors = colors
     props.savePalette(newPalette)
     props.history.push('/') // Newly created palette is saved to home page
   }
