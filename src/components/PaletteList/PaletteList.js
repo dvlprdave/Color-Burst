@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom';
 
-import MiniPalette from '../MiniPalette';
+import MiniPalette from '../MiniPalette/MiniPalette';
 
 const Wrapper = styled.div`
   display: flex;

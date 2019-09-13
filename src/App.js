@@ -8,9 +8,11 @@ import seedColors from './seedColors'
 import { generatePalette } from './colorHelpers'
 import NewPaletteForm from './components/NewPaletteForm';
 
+const savedPalettes = JSON.parse(window.localStorage.getItem('palettes'))
+
 class App extends Component {
   state = {
-    palettes: seedColors
+    palettes: savedPalettes || seedColors
   }
 
   findPalette(id) {
@@ -20,9 +22,15 @@ class App extends Component {
   }
 
   savePalette = (newPalette) => {
-    this.setState({
-      palettes: [...this.state.palettes, newPalette]
-    })
+    this.setState(
+      { palettes: [...this.state.palettes, newPalette] },
+      this.syncLocalStorage
+    )
+  }
+
+  // Save created palette to local storage
+  syncLocalStorage = () => {
+    window.localStorage.setItem('palettes', JSON.stringify(this.state.palettes))
   }
 
   render() {
