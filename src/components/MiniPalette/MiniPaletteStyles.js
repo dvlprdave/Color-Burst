@@ -23,9 +23,7 @@ export const Main = styled.div`
      opacity: 1;
    }
 `
-export const Delete = styled.div`
 
-`
 
 export const Colors = styled.div`
   width: 100%;

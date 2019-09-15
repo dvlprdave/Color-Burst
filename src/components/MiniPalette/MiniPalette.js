@@ -1,11 +1,17 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import { MiniColorStyles, Main, Delete, Colors, Title, Emoji, StyledDeleteIcon } from './MiniPaletteStyles'
+import { MiniColorStyles, Main, Colors, Title, Emoji, StyledDeleteIcon } from './MiniPaletteStyles'
 
 const MiniColor = styled.div`${MiniColorStyles}`
 
-const MiniPalette = ({ paletteName, emoji, colors, handleClick }) => {
+const MiniPalette = ({ paletteName, emoji, colors, handleClick, handleDelete, id }) => {
+
+  function deletePalette(e) {
+    e.stopPropagation()
+    handleDelete(id)
+  }
+
   const miniColorBoxes = colors.map(color => (
     <MiniColor
       style={{ backgroundColor: color.color }}
@@ -14,10 +20,11 @@ const MiniPalette = ({ paletteName, emoji, colors, handleClick }) => {
   ))
   return (
     <Main onClick={handleClick}>
-      <Delete>
-        {/* Inline style used to override default Material transition  */}
-        <StyledDeleteIcon style={{ transition: 'all 0.3s ease-in-out' }} />
-      </Delete>
+      {/* Inline style used to override default Material transition  */}
+      <StyledDeleteIcon
+        style={{ transition: 'all 0.3s ease-in-out' }}
+        onClick={deletePalette}
+      />
       <Colors>{miniColorBoxes}</Colors>
       <Title>{paletteName} <Emoji>{emoji}</Emoji></Title>
     </Main>
