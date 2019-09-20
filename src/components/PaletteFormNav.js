@@ -9,7 +9,8 @@ import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import AddToPhotosIcon from '@material-ui/icons/AddToPhotos';
 import Button from '@material-ui/core/button'
-import PaletteMetaForm from './PaletteMetaForm';
+import PaletteMetaForm from './PaletteMetaForm'
+import sizes from '../Theme/sizes'
 
 const drawerWidth = 350;
 
@@ -25,6 +26,10 @@ const useStyles = makeStyles(theme => ({
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
     }),
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    height: '64px'
   },
   appBarShift: {
     width: `calc(100% - ${drawerWidth}px)`,
@@ -33,19 +38,23 @@ const useStyles = makeStyles(theme => ({
       easing: theme.transitions.easing.easeOut,
       duration: theme.transitions.duration.enteringScreen,
     }),
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    height: '64px'
   },
   menuButton: {
     marginRight: theme.spacing(2),
+
   },
   navBtns: {
     marginRight: '1rem',
+    [sizes.down('xs')]: {
+      marginRight: '0.5rem'
+    }
   },
   button: {
-    margin: '0 0.5rem'
+    margin: '0 0.5rem',
+    [sizes.down('xs')]: {
+      margin: '0 0.2rem',
+      padding: '0.2rem'
+    }
   }
 }))
 
@@ -90,7 +99,7 @@ function PaletteFormNav({ open, handleDrawerOpen, savePalette, palettes }) {
             </Button>
           </Link>
           <Button className={classes.button} variant="contained" color="primary" onClick={showForm}>
-            Open form dialog
+            Save
           </Button>
         </div>
       </AppBar>

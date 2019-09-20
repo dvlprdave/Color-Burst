@@ -53,9 +53,8 @@ export const MainColorBox = styled.div`
     width: 100%;
     height: 5%;
   `}
-
-
 `
+
 export const CopyOverlay = styled.div`
   opacity: 0;
   width: 100%;
@@ -71,6 +70,7 @@ export const CopyOverlay = styled.div`
     position: absolute;
   `}
 `
+
 export const CopyMessage = styled.div`
   display: flex;
   flex-direction: column;
@@ -104,6 +104,10 @@ export const CopyMessage = styled.div`
     text-transform: uppercase;
     text-shadow: 1px 2px black;
     background: rgba(255,255,255, 0.20);
+
+    ${({ theme }) => theme.xs`
+    font-size: 5rem;
+  `}
   }
 
   p {

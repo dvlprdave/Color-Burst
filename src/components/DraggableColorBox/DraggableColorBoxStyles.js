@@ -14,6 +14,21 @@ export const DraggableWrapper = styled.div`
     color: white;
     transform: scale(1.3)
   }
+
+  ${({ theme }) => theme.lg`
+    width: 25%;
+    height: 20%;
+  `}
+
+  ${({ theme }) => theme.md`
+    width: 50%;
+    height: 10%;
+  `}
+
+  ${({ theme }) => theme.sm`
+    width: 100%;
+    height: 5%;
+  `}
 `
 
 export const BoxContent = styled.div`

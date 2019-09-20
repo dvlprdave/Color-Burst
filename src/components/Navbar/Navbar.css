@@ -13,6 +13,13 @@
   height: 100%;
   display: flex;
   align-items: center;
+
+}
+
+@media screen and (max-width: 575.98px) {
+  .logo {
+    display: none;
+  }
 }
 
 .logo a {
@@ -24,6 +31,12 @@
   width: 340px;
   margin: 0 10px;
   display: inline-block;
+}
+
+@media screen and (max-width: 991.98px) {
+  .slider {
+    width: 150px;
+  }
 }
 
 .rc-slider-track {
