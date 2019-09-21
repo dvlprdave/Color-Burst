@@ -1,3 +1,4 @@
+// Media Query sizes for useStyles Material UI theme
 export default {
   up() { },
   down(size) {
