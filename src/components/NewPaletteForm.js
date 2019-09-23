@@ -11,6 +11,7 @@ import DraggableColorList from '../DraggableColorList'
 import arrayMove from 'array-move'
 import PaletteFormNav from './PaletteFormNav'
 import ColorPickerForm from './ColorPickerForm'
+import seedcolors from '../seedColors'
 
 const drawerWidth = 350;
 
@@ -28,7 +29,8 @@ const useStyles = makeStyles(theme => ({
   drawerPaper: {
     width: drawerWidth,
     display: 'flex',
-    alignItems: 'center'
+    alignItems: 'center',
+    // backgroundColor: '#0f1918'
   },
   drawerHeader: {
     display: 'flex',
@@ -61,7 +63,7 @@ const useStyles = makeStyles(theme => ({
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
   },
   buttons: {
     width: '100%'
@@ -74,9 +76,7 @@ const useStyles = makeStyles(theme => ({
 const NewPaletteForm = (props) => {
   const classes = useStyles();
   const [open, setOpen] = useState(true);
-  // const [currentColor, setColor] = useState("teal")
-  const [colors, setColors] = useState(props.palettes[0].colors)
-  // const [newColorName, setNewColorName] = useState('')
+  const [colors, setColors] = useState(seedcolors[0].colors)
 
   const { palettes } = props
 
@@ -186,6 +186,9 @@ const NewPaletteForm = (props) => {
           removeColor={removeColor}
           axis='xy'
           onSortEnd={onSortEnd}
+          distance={20}
+        // React sortable made a note of click events being swallowed on mousedown. 
+        // Distance is used to prevent said bug and nothing more. 
         />
       </main>
     </div >

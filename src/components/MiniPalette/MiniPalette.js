@@ -5,13 +5,14 @@ import { MiniColorStyles, Main, Colors, Title, Emoji, StyledDeleteIcon } from '.
 
 const MiniColor = styled.div`${MiniColorStyles}`
 
-const MiniPalette = ({ paletteName, emoji, colors, handleClick, handleDelete, id }) => {
-
+const MiniPalette = React.memo(({ paletteName, emoji, colors, handleDelete, handleClick, id }) => {
+  // FIXME: React.memo not working
   function deletePalette(e) {
     e.stopPropagation()
     handleDelete(id)
   }
 
+  console.log('Rendering :', paletteName);
   const miniColorBoxes = colors.map(color => (
     <MiniColor
       style={{ backgroundColor: color.color }}
@@ -19,7 +20,7 @@ const MiniPalette = ({ paletteName, emoji, colors, handleClick, handleDelete, id
     />
   ))
   return (
-    <Main onClick={handleClick}>
+    <Main onClick={() => handleClick(id)}>
       {/* Inline style used to override default Material transition  */}
       <StyledDeleteIcon
         style={{ transition: 'all 0.2s ease-in-out' }}
@@ -29,6 +30,6 @@ const MiniPalette = ({ paletteName, emoji, colors, handleClick, handleDelete, id
       <Title>{paletteName} <Emoji>{emoji}</Emoji></Title>
     </Main>
   )
-}
+})
 
 export default MiniPalette

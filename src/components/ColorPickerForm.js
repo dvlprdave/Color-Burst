@@ -63,7 +63,10 @@ function ColorPickerForm({ colors, paletteIsFull, addNewColor }) {
         color={currentColor}
         onChangeComplete={updateCurrentColor}
       />
-      <ValidatorForm onSubmit={handleSubmit}>
+      <ValidatorForm
+        onSubmit={handleSubmit}
+        instantValidate={false}      // Validation only appears when attempting to re-submit
+      >
         <TextValidator
           className={classes.colorNameInput}
           value={newColorName}

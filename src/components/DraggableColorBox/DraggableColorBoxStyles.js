@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+// import { chroma } from 'chroma-js';
 
 export const DraggableWrapper = styled.div`
   display: inline-block;
@@ -48,3 +49,6 @@ export const BoxContent = styled.div`
     transition: all 0.3s ease-in-out;
   }
 `
+  // color: ${props => chroma(props.color).luminance() <= 0.8
+  //   ? 'rgba(255, 255, 255, 0.8)'
+  //   : 'rgba(0, 0, 0, 0.6)'};

@@ -29,7 +29,8 @@ const useStyles = makeStyles(theme => ({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    height: '64px'
+    height: '64px',
+    backgroundColor: '#0f1918'
   },
   appBarShift: {
     width: `calc(100% - ${drawerWidth}px)`,

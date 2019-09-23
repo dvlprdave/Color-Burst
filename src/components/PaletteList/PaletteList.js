@@ -55,7 +55,8 @@ const PaletteList = ({ palettes, deletePalette, history }) => {
               >
                 <MiniPalette
                   {...palette}
-                  handleClick={() => goToPalette(palette.id)}
+                  // handleClick={() => goToPalette(palette.id)}
+                  handleClick={goToPalette}
                   handleDelete={dialogToggle}
                   key={palette.id}
                   id={palette.id}
