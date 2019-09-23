@@ -20,7 +20,9 @@ class ColorBox extends Component {
   render() {
     const { background, name, moreUrl, showLink } = this.props
     const { copied } = this.state
-    // Dynamic text color based on lumincance 
+    // Dynamic text color based on luminance.
+    // "text" is a prop from ColorBoxStyles. It sets the 
+    // base color and then changes based on luminance
     const isDarkColor = chroma(background).luminance() <= 0.08
     const isLightColor = chroma(background).luminance() >= 0.7
     return (

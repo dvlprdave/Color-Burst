@@ -22,7 +22,7 @@ const MiniPalette = ({ paletteName, emoji, colors, handleClick, handleDelete, id
     <Main onClick={handleClick}>
       {/* Inline style used to override default Material transition  */}
       <StyledDeleteIcon
-        style={{ transition: 'all 0.3s ease-in-out' }}
+        style={{ transition: 'all 0.2s ease-in-out' }}
         onClick={deletePalette}
       />
       <Colors>{miniColorBoxes}</Colors>
