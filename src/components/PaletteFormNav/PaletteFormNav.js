@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom'
-import { makeStyles } from '@material-ui/core/styles'
 import clsx from 'clsx';
+
 import CssBaseline from '@material-ui/core/CssBaseline';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -9,55 +9,10 @@ import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import AddToPhotosIcon from '@material-ui/icons/AddToPhotos';
 import Button from '@material-ui/core/button'
-import PaletteMetaForm from './PaletteMetaForm'
-import sizes from '../Theme/sizes'
 
-const drawerWidth = 350;
+import PaletteMetaForm from '../PaletteMetaForm'
+import useStyles from './PaletteFormNavStyles'
 
-const useStyles = makeStyles(theme => ({
-  root: {
-    display: 'flex'
-  },
-  hide: {
-    display: 'none'
-  },
-  appBar: {
-    transition: theme.transitions.create(['margin', 'width'], {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen,
-    }),
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    height: '64px',
-    backgroundColor: '#0f1918'
-  },
-  appBarShift: {
-    width: `calc(100% - ${drawerWidth}px)`,
-    marginLeft: drawerWidth,
-    transition: theme.transitions.create(['margin', 'width'], {
-      easing: theme.transitions.easing.easeOut,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
-  },
-  menuButton: {
-    marginRight: theme.spacing(2),
-
-  },
-  navBtns: {
-    marginRight: '1rem',
-    [sizes.down('xs')]: {
-      marginRight: '0.5rem'
-    }
-  },
-  button: {
-    margin: '0 0.5rem',
-    [sizes.down('xs')]: {
-      margin: '0 0.2rem',
-      padding: '0.2rem'
-    }
-  }
-}))
 
 function PaletteFormNav({ open, handleDrawerOpen, savePalette, palettes }) {
   const classes = useStyles();

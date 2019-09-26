@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom'
 import { CSSTransition, TransitionGroup } from 'react-transition-group'
+
 import Avatar from '@material-ui/core/Avatar'
 import List from '@material-ui/core/List'
 import ListItem from '@material-ui/core/ListItem'
@@ -55,7 +56,6 @@ const PaletteList = ({ palettes, deletePalette, history }) => {
               >
                 <MiniPalette
                   {...palette}
-                  // handleClick={() => goToPalette(palette.id)}
                   handleClick={goToPalette}
                   handleDelete={dialogToggle}
                   key={palette.id}

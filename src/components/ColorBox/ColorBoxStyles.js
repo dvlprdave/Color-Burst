@@ -56,10 +56,10 @@ export const MainColorBox = styled.div`
 `
 
 export const CopyOverlay = styled.div`
-  opacity: 0;
   width: 100%;
   height: 100%;
-  z-index: 100%;
+  opacity: 0;
+  z-index: 0;
   transition: transform 0.6s ease-in-out;
   transform: scale(0.1);
 
@@ -68,9 +68,8 @@ export const CopyOverlay = styled.div`
     z-index: 10;
     transform: scale(50);
     position: fixed;
-    top: 0;
-    left: 0;
-    overflow-y: hidden;
+    top: 0px;
+    left: 0px;
   `}
 `
 

@@ -1,77 +1,21 @@
 import React, { useState } from 'react'
 import clsx from 'clsx';
-import { makeStyles } from '@material-ui/core/styles'
+
 import Drawer from '@material-ui/core/Drawer'
 import Typography from '@material-ui/core/Typography'
 import Divider from '@material-ui/core/Divider'
 import IconButton from '@material-ui/core/IconButton'
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft'
 import Button from '@material-ui/core/button'
-import DraggableColorList from '../DraggableColorList'
+
 import arrayMove from 'array-move'
-import PaletteFormNav from './PaletteFormNav'
-import ColorPickerForm from './ColorPickerForm'
-import seedcolors from '../seedColors'
+import PaletteFormNav from '../PaletteFormNav/PaletteFormNav'
+import ColorPickerForm from '../ColorPickerForm'
+import seedcolors from '../../seedColors'
+import DraggableColorList from '../DraggableColorList'
 
-const drawerWidth = 350;
+import useStyles from './NewPaletteFormStyles'
 
-const useStyles = makeStyles(theme => ({
-  root: {
-    display: 'flex',
-  },
-  hide: {
-    display: 'none',
-  },
-  drawer: {
-    width: drawerWidth,
-    flexShrink: 0,
-  },
-  drawerPaper: {
-    width: drawerWidth,
-    display: 'flex',
-    alignItems: 'center',
-    // backgroundColor: '#0f1918'
-  },
-  drawerHeader: {
-    display: 'flex',
-    alignItems: 'center',
-    width: '100%',
-    padding: theme.spacing(0, 1),
-    ...theme.mixins.toolbar,
-    justifyContent: 'flex-end',
-  },
-  content: {
-    flexGrow: 1,
-    height: 'calc(100vh - 64px)',
-    padding: 0,
-    transition: theme.transitions.create('margin', {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen,
-    }),
-    marginLeft: -drawerWidth,
-  },
-  contentShift: {
-    transition: theme.transitions.create('margin', {
-      easing: theme.transitions.easing.easeOut,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
-    marginLeft: 0,
-  },
-  container: {
-    width: '90%',
-    height: '100%',
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  buttons: {
-    width: '100%'
-  },
-  button: {
-    width: '50%'
-  },
-}));
 
 const NewPaletteForm = (props) => {
   const classes = useStyles();
@@ -100,8 +44,17 @@ const NewPaletteForm = (props) => {
     // Single array with all colors from existing palettes
     const allColors = props.palettes.map(p => p.colors).flat()
     //Get random color from array
-    let rand = Math.floor(Math.random() * allColors.length)
-    const randomColor = allColors[rand]
+    let rand
+    let randomColor = allColors[rand]
+    let isDuplicateColor = true
+    while (isDuplicateColor) {  // Prevent duplicate colors
+      let rand = Math.floor(Math.random() * allColors.length)
+      randomColor = allColors[rand]
+      isDuplicateColor = colors.some(
+        // eslint-disable-next-line
+        color => color.name === randomColor.name
+      )
+    }
     //Add random color to colors array
     setColors([...colors, randomColor])
   }

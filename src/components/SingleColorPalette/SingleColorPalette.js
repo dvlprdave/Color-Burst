@@ -1,38 +1,11 @@
 import React, { Component } from 'react';
-import Navbar from './Navbar/Navbar';
-import PaletteFooter from './PaletteFooter';
-import ColorBox from './ColorBox/ColorBox';
-import styled from 'styled-components';
-import { Link } from 'react-router-dom';
-import { MainColorBox } from './ColorBox/ColorBoxStyles'
+import Navbar from '../Navbar/Navbar';
+import PaletteFooter from '../PaletteFooter';
+import ColorBox from '../ColorBox/ColorBox';
 
-const PaletteWrapper = styled.div`
-  height: 50%;
-`
-const GoBackBox = styled(MainColorBox)`
-  background-color: black;
-  position: relative;
-`
-const GoBackBtn = styled(Link)`
-  width: 100px;
-  height: 30px;
-  position: absolute;
-  display: inline-block;
-  top: 50%;
-  left: 50%;
-  margin-left: -50px;
-  margin-top: -15px;
-  text-align: center;
-  text-decoration: none;
-  outline: none;
-  background: rgba(255,255,255, 0.3);
-  font-size: 1rem;
-  line-height: 30px;
-  color: white;
-  text-transform: uppercase;
-  border: none;
-  cursor: pointer;
-`
+import { PaletteColors } from '../Palette/PaletteStyles'    // This is height of 90vh
+import { PaletteWrapper, GoBackBox, GoBackBtn } from './SingleColorPaletteStyles'
+
 class SingleColorPalette extends Component {
   constructor(props) {
     super(props)
@@ -71,23 +44,19 @@ class SingleColorPalette extends Component {
       />
     ))
     return (
-      <PaletteWrapper className='Palette SingleColorPalette'>
+      <PaletteWrapper>
         <Navbar
           changeFormat={this.changeFormat}
           showingAllColors={false}
         />
-        <div className='Palette-colors'>
+        <PaletteColors>
           {colorBoxes}
-          {/* <div className='go-back ColorBox'>
-            <Link to={`/palette/${id}`} className='back-button'>GO Back</Link>
-          </div> */}
           <GoBackBox>
-            {/* <Link to={`/palette/${id}`} className='back-button'>GO Back</Link> */}
             <GoBackBtn to={`/palette/${id}`}>
               GO Back
             </GoBackBtn>
           </GoBackBox>
-        </div>
+        </PaletteColors>
         <PaletteFooter
           paletteName={paletteName}
           emoji={emoji}

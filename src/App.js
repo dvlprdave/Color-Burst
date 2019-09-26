@@ -1,12 +1,13 @@
+import React, { Component } from 'react'
+import { Route, Switch } from 'react-router-dom'
 
-import React, { Component } from 'react';
-import { Route, Switch } from 'react-router-dom';
-import Palette from './components/Palette/Palette';
-import PaletteList from './components/PaletteList/PaletteList';
-import SingleColorPalette from './components/SingleColorPalette';
+import Palette from './components/Palette/Palette'
+import PaletteList from './components/PaletteList/PaletteList'
+import SingleColorPalette from './components/SingleColorPalette/SingleColorPalette'
+import NewPaletteForm from './components/NewPaletteForm/NewPaletteForm'
+
 import seedColors from './seedColors'
 import { generatePalette } from './colorHelpers'
-import NewPaletteForm from './components/NewPaletteForm';
 
 const savedPalettes = JSON.parse(window.localStorage.getItem('palettes'))
 
@@ -56,17 +57,6 @@ class App extends Component {
         />
         <Route
           exact
-          path='/'
-          render={(routeProps) => (
-            <PaletteList
-              palettes={this.state.palettes}
-              deletePalette={this.deletePalette}
-              {...routeProps}
-            />
-          )}
-        />
-        <Route
-          exact
           path='/palette/:id'
           render={routeProps => (
             <Palette
@@ -85,6 +75,15 @@ class App extends Component {
               palette={generatePalette(
                 this.findPalette(routeProps.match.params.paletteId)
               )}
+            />
+          )}
+        />
+        <Route
+          render={(routeProps) => (
+            <PaletteList
+              palettes={this.state.palettes}
+              deletePalette={this.deletePalette}
+              {...routeProps}
             />
           )}
         />

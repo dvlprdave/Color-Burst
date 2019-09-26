@@ -9,11 +9,16 @@ const Wrapper = styled.footer`
   font-weight: bold;
 `
 
+const Emoji = styled.span`
+  font-size: 1.5rem;
+  margin: 0 1rem;
+`
+
 const PaletteFooter = ({ paletteName, emoji }) => {
   return (
-    <Wrapper className='Palette-footer'>
+    <Wrapper>
       {paletteName}
-      <span className='emoji'>{emoji}</span>
+      <Emoji>{emoji}</Emoji>
     </Wrapper>
   );
 }

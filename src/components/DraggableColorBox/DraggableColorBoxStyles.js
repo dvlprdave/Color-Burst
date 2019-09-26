@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 // import { chroma } from 'chroma-js';
 
 export const DraggableWrapper = styled.div`
@@ -44,6 +44,10 @@ export const BoxContent = styled.div`
   color: rgba(0, 0, 0, 0.5);
   letter-spacing: 1px;
   text-transform: uppercase;
+
+  ${({ text }) => text && css`
+      color: white;
+  `}
 
   svg {
     transition: all 0.3s ease-in-out;
