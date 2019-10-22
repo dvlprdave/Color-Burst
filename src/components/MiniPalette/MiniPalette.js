@@ -6,7 +6,6 @@ import { MiniColorStyles, Main, Colors, Title, Emoji, StyledDeleteIcon } from '.
 const MiniColor = styled.div`${MiniColorStyles}`
 
 const MiniPalette = React.memo(({ paletteName, emoji, colors, handleDelete, handleClick, id }) => {
-  // FIXME: React.memo not working
   function deletePalette(e) {
     e.stopPropagation()
     handleDelete(id)

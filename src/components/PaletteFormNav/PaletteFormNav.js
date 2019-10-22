@@ -49,7 +49,7 @@ function PaletteFormNav({ open, handleDrawerOpen, savePalette, palettes }) {
           </Typography>
         </Toolbar>
         <div className={classes.navBtns}>
-          <Link to='/'>
+          <Link to='/' style={{ textDecoration: 'none' }}>
             <Button className={classes.button} variant='contained' color='secondary'>
               Go Back
             </Button>
